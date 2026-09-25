@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WT Practical Code Library</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:Inter,Arial,sans-serif;background:#0b1020;color:#eef2ff}
+header{padding:34px 20px;background:linear-gradient(135deg,#172554,#312e81);position:sticky;top:0;z-index:5}
+.hero{max-width:1200px;margin:auto} h1{margin:0 0 8px;font-size:clamp(28px,5vw,46px)} .sub{color:#c7d2fe}
+.controls{max-width:1200px;margin:20px auto 0;display:flex;gap:10px;flex-wrap:wrap}
+input,select{padding:13px 15px;border-radius:10px;border:1px solid #475569;background:#111827;color:white;font-size:15px}
+#search{flex:1;min-width:220px}
+main{max-width:1200px;margin:25px auto;padding:0 20px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px} .stat{background:#172033;padding:10px 14px;border-radius:10px;color:#cbd5e1}
+.grid{display:grid;grid-template-columns:1fr;gap:18px} .card{background:#111827;border:1px solid #273449;border-radius:16px;overflow:hidden;box-shadow:0 8px 25px #0004}
+.card-head{padding:18px 18px 12px} .card h2{margin:10px 0 0;font-size:19px}
+.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#312e81;color:#ddd6fe;font-size:12px}
+.code-wrap{position:relative} pre{margin:0;padding:20px;overflow:auto;max-height:480px;background:#070b14;color:#dbeafe;font-size:13px;line-height:1.55}
+.copy{position:absolute;right:10px;top:10px;z-index:2;border:0;border-radius:8px;padding:8px 11px;background:#4f46e5;color:white;cursor:pointer}
+.copy:hover{background:#6366f1} .empty{padding:40px;text-align:center;color:#94a3b8;display:none}
+footer{text-align:center;color:#94a3b8;padding:30px}
+@media(min-width:900px){.grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header><div class="hero">
+<h1>Web Technology Practical Code Library</h1>
+<div class="sub">T.Y.B.Sc. (Computer Science) • PHP • JavaScript • jQuery</div>
+<div class="controls">
+<input id="search" placeholder="Search question or topic..." oninput="filterCards()">
+<select id="category" onchange="filterCards()">
+<option value="all">All sections</option>
+<option>Functions</option><option>Strings</option><option>Arrays</option>
+<option>Database & Files</option><option>JavaScript & jQuery</option>
+</select>
+</div>
+</div></header>
+<main>
+<div class="stats"><div class="stat"><b>28</b> practicals</div><div class="stat">Searchable</div><div class="stat">One-click copy</div><div class="stat">Works in any modern browser</div></div>
+<section class="grid" id="grid"><article class="card" data-cat="Functions" data-title="q1. mod and power of two numbers">
+      <div class="card-head"><span class="badge">Functions</span><h2>Q1. Mod and Power of Two Numbers</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;body&gt;
+&lt;h2&gt;Mod and Power&lt;/h2&gt;
+&lt;form method=&quot;post&quot;&gt;
+Enter First Number: &lt;input type=&quot;number&quot; name=&quot;n1&quot;&gt;&lt;br&gt;&lt;br&gt;
+Enter Second Number: &lt;input type=&quot;number&quot; name=&quot;n2&quot;&gt;&lt;br&gt;&lt;br&gt;
+&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Calculate&quot;&gt;
+&lt;/form&gt;
+&lt;?php
+function findMod($a, $b) { return $a % $b; }
+function findPower($a, $b) { return pow($a, $b); }
+if(isset($_POST[&#x27;submit&#x27;])) {
+    $n1 = $_POST[&#x27;n1&#x27;]; $n2 = $_POST[&#x27;n2&#x27;];
+    echo &quot;&lt;h3&gt;Result&lt;/h3&gt;&quot;;
+    echo &quot;Mod = &quot; . findMod($n1, $n2) . &quot;&lt;br&gt;&quot;;
+    echo &quot;Power = &quot; . findPower($n1, $n2);
+}
+?&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre></div>
+    </article><article class="card" data-cat="Functions" data-title="q2. sum of first n numbers and factorial">
+      <div class="card-head"><span class="badge">Functions</span><h2>Q2. Sum of First N Numbers and Factorial</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;body&gt;
+&lt;h2&gt;Sum and Factorial&lt;/h2&gt;
+&lt;form method=&quot;post&quot;&gt;
+Enter Number: &lt;input type=&quot;number&quot; name=&quot;n&quot;&gt;
+&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Calculate&quot;&gt;
+&lt;/form&gt;
+&lt;?php
+function sumN($n) {
+    $sum = 0;
+    for($i = 1; $i &lt;= $n; $i++) $sum += $i;
+    return $sum;
+}
+function factorial($n) {
+    $fact = 1;
+    for($i = 1; $i &lt;= $n; $i++) $fact *= $i;
+    return $fact;
+}
+if(isset($_POST[&#x27;submit&#x27;])) {
+    $n = $_POST[&#x27;n&#x27;];
+    echo &quot;Sum of first $n numbers = &quot; . sumN($n) . &quot;&lt;br&gt;&quot;;
+    echo &quot;Factorial of $n = &quot; . factorial($n);
+}
+?&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre></div>
+    </article><article class="card" data-cat="Functions" data-title="q3. arithmetic operations using functions and include">
+      <div class="card-head"><span class="badge">Functions</span><h2>Q3. Arithmetic Operations Using Functions and Include</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>// functions.php
+&lt;?php
+function add($a = 0, $b = 0) { return $a + $b; }
+function subtract($a = 0, $b = 0) { return $a - $b; }
+function multiply($a = 1, $b = 1) { return $a * $b; }
+function divide($a = 1, $b = 1) {
+    if($b == 0) return &quot;Cannot divide by zero&quot;;
+    return $a / $b;
+}
+?&gt;
+
+// index.php
+&lt;?php
+include &quot;functions.php&quot;;
+if(isset($_POST[&#x27;submit&#x27;])) {
+    $a = $_POST[&#x27;n1&#x27;]; $b = $_POST[&#x27;n2&#x27;]; $op = $_POST[&#x27;op&#x27;];
+    switch($op) {
+        case &quot;add&quot;: $result = add($a,$b); break;
+        case &quot;sub&quot;: $result = subtract($a,$b); break;
+        case &quot;mul&quot;: $result = multiply($a,$b); break;
+        case &quot;div&quot;: $result = divide($a,$b); break;
+    }
+    echo &quot;Result = $result&quot;;
+}
+?&gt;
+&lt;form method=&quot;post&quot;&gt;
+&lt;input type=&quot;number&quot; name=&quot;n1&quot;&gt;
+&lt;input type=&quot;number&quot; name=&quot;n2&quot;&gt;&lt;br&gt;
+&lt;input type=&quot;radio&quot; name=&quot;op&quot; value=&quot;add&quot;&gt;Addition
+&lt;input type=&quot;radio&quot; name=&quot;op&quot; value=&quot;sub&quot;&gt;Subtraction
+&lt;input type=&quot;radio&quot; name=&quot;op&quot; value=&quot;mul&quot;&gt;Multiplication
+&lt;input type=&quot;radio&quot; name=&quot;op&quot; value=&quot;div&quot;&gt;Division
+&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Calculate&quot;&gt;
+&lt;/form&gt;</code></pre></div>
+    </article><article class="card" data-cat="Functions" data-title="q4. prime number and divisors">
+      <div class="card-head"><span class="badge">Functions</span><h2>Q4. Prime Number and Divisors</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;body&gt;
+&lt;form method=&quot;post&quot;&gt;
+Enter Number: &lt;input type=&quot;number&quot; name=&quot;n&quot;&gt;
+&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Check&quot;&gt;
+&lt;/form&gt;
+&lt;?php
+if(isset($_POST[&#x27;submit&#x27;])) {
+    $n = $_POST[&#x27;n&#x27;]; $count = 0; $divisors = &quot;&quot;;
+    for($i=1; $i&lt;=$n; $i++) {
+        if($n % $i == 0) { $count++; $divisors .= $i.&quot; &quot;; }
+    }
+    if($count == 2) echo &quot;$n is a Prime Number.&quot;;
+    else echo &quot;$n is not a Prime Number.&lt;br&gt;Divisors: $divisors&quot;;
+}
+?&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre></div>
+    </article><article class="card" data-cat="Strings" data-title="q1. split string and replace separator">
+      <div class="card-head"><span class="badge">Strings</span><h2>Q1. Split String and Replace Separator</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;body&gt;
+&lt;form method=&quot;post&quot;&gt;
+Enter String: &lt;input type=&quot;text&quot; name=&quot;str&quot;&gt;&lt;br&gt;&lt;br&gt;
+Select Separator:
+&lt;select name=&quot;sep&quot;&gt;&lt;option value=&quot;#&quot;&gt;#&lt;/option&gt;&lt;option value=&quot;|&quot;&gt;|&lt;/option&gt;&lt;option value=&quot;%&quot;&gt;%&lt;/option&gt;&lt;/select&gt;&lt;br&gt;&lt;br&gt;
+New Separator: &lt;input type=&quot;text&quot; name=&quot;newsep&quot;&gt;&lt;br&gt;&lt;br&gt;
+&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Process&quot;&gt;
+&lt;/form&gt;
+&lt;?php
+function splitString($str,$sep){ return explode($sep,$str); }
+function replaceSeparator($str,$sep,$newsep){ return str_replace($sep,$newsep,$str); }
+if(isset($_POST[&#x27;submit&#x27;])) {
+    $str=$_POST[&#x27;str&#x27;]; $sep=$_POST[&#x27;sep&#x27;]; $newsep=$_POST[&#x27;newsep&#x27;];
+    echo &quot;&lt;h3&gt;Words:&lt;/h3&gt;&quot;;
+    foreach(splitString($str,$sep) as $word) echo $word.&quot;&lt;br&gt;&quot;;
+    echo &quot;&lt;h3&gt;After Replacement:&lt;/h3&gt;&quot;.replaceSeparator($str,$sep,$newsep);
+}
+?&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre></div>
+    </article><article class="card" data-cat="Strings" data-title="q2. last word and replace separator">
+      <div class="card-head"><span class="badge">Strings</span><h2>Q2. Last Word and Replace Separator</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;body&gt;
+&lt;form method=&quot;post&quot;&gt;
+Enter String: &lt;input type=&quot;text&quot; name=&quot;str&quot;&gt;&lt;br&gt;&lt;br&gt;
+Separator:
+&lt;select name=&quot;sep&quot;&gt;&lt;option value=&quot;#&quot;&gt;#&lt;/option&gt;&lt;option value=&quot;|&quot;&gt;|&lt;/option&gt;&lt;option value=&quot;%&quot;&gt;%&lt;/option&gt;&lt;/select&gt;&lt;br&gt;&lt;br&gt;
+New Separator: &lt;input type=&quot;text&quot; name=&quot;newsep&quot;&gt;&lt;br&gt;&lt;br&gt;
+&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Process&quot;&gt;
+&lt;/form&gt;
+&lt;?php
+if(isset($_POST[&#x27;submit&#x27;])) {
+    $str=$_POST[&#x27;str&#x27;]; $sep=$_POST[&#x27;sep&#x27;]; $newsep=$_POST[&#x27;newsep&#x27;];
+    $words=explode($sep,$str);
+    echo &quot;Last Word = &quot;.end($words).&quot;&lt;br&gt;&quot;;
+    echo &quot;After Replacement = &quot;.str_replace($sep,$newsep,$str);
+}
+?&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre></div>
+    </article><article class="card" data-cat="Strings" data-title="q3. first five words, case conversion and padding">
+      <div class="card-head"><span class="badge">Strings</span><h2>Q3. First Five Words, Case Conversion and Padding</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;body&gt;
+&lt;form method=&quot;post&quot;&gt;
+Enter String: &lt;input type=&quot;text&quot; name=&quot;str&quot;&gt;
+&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Process&quot;&gt;
+&lt;/form&gt;
+&lt;?php
+if(isset($_POST[&#x27;submit&#x27;])) {
+    $str=$_POST[&#x27;str&#x27;];
+    $words=preg_split(&#x27;/\s+/&#x27;,trim($str));
+    echo &quot;&lt;h3&gt;First Five Words:&lt;/h3&gt;&quot;;
+    for($i=0;$i&lt;5 &amp;&amp; $i&lt;count($words);$i++) echo $words[$i].&quot; &quot;;
+    echo &quot;&lt;h3&gt;Lowercase:&lt;/h3&gt;&quot;.strtolower($str);
+    echo &quot;&lt;h3&gt;Title Case:&lt;/h3&gt;&quot;.ucwords(strtolower($str));
+    echo &quot;&lt;h3&gt;Padded:&lt;/h3&gt;*&quot;.$str.&quot;*&quot;;
+}
+?&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre></div>
+    </article><article class="card" data-cat="Strings" data-title="q4. length without built-in function and count vowels">
+      <div class="card-head"><span class="badge">Strings</span><h2>Q4. Length Without Built-in Function and Count Vowels</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;?php
+function stringLength($str) {
+    $count=0;
+    while(isset($str[$count])) $count++;
+    return $count;
+}
+function countVowels($str) {
+    $count=0; $str=strtolower($str);
+    for($i=0;$i&lt;strlen($str);$i++)
+        if(in_array($str[$i],[&#x27;a&#x27;,&#x27;e&#x27;,&#x27;i&#x27;,&#x27;o&#x27;,&#x27;u&#x27;])) $count++;
+    return $count;
+}
+$str=$_POST[&#x27;str&#x27;] ?? &quot;Hello World&quot;;
+echo &quot;Length = &quot;.stringLength($str).&quot;&lt;br&gt;&quot;;
+echo &quot;Vowels = &quot;.countVowels($str).&quot;&lt;br&gt;&quot;;
+echo &quot;Lowercase = &quot;.strtolower($str).&quot;&lt;br&gt;&quot;;
+echo &quot;Title Case = &quot;.ucwords(strtolower($str));
+?&gt;
+&lt;form method=&quot;post&quot;&gt;&lt;input name=&quot;str&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;Process&quot;&gt;&lt;/form&gt;</code></pre></div>
+    </article><article class="card" data-cat="Strings" data-title="q5. delete, insert and replace">
+      <div class="card-head"><span class="badge">Strings</span><h2>Q5. Delete, Insert and Replace</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;?php
+$str=&quot;Hello World&quot;;
+$position=6; $length=1;
+$deleted=substr_replace($str,&quot;&quot;,$position,$length);
+$small=&quot;Beautiful &quot;;
+$inserted=substr_replace($str,$small,6,0);
+$replacement=&quot;PHP&quot;;
+$replaced=substr_replace($str,$replacement,6,5);
+echo &quot;Original: $str&lt;br&gt;&quot;;
+echo &quot;After Delete: $deleted&lt;br&gt;&quot;;
+echo &quot;After Insert: $inserted&lt;br&gt;&quot;;
+echo &quot;After Replace: $replaced&quot;;
+?&gt;</code></pre></div>
+    </article><article class="card" data-cat="Strings" data-title="q6. padding, remove leading spaces and reverse">
+      <div class="card-head"><span class="badge">Strings</span><h2>Q6. Padding, Remove Leading Spaces and Reverse</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;body&gt;
+&lt;form method=&quot;post&quot;&gt;
+Enter String: &lt;input type=&quot;text&quot; name=&quot;str&quot;&gt;
+&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Process&quot;&gt;
+&lt;/form&gt;
+&lt;?php
+if(isset($_POST[&#x27;submit&#x27;])) {
+    $str=$_POST[&#x27;str&#x27;];
+    echo &quot;Padded: *&quot;.$str.&quot;*&lt;br&gt;&quot;;
+    echo &quot;Without Leading Spaces: &quot;.ltrim($str).&quot;&lt;br&gt;&quot;;
+    echo &quot;Reverse: &quot;.strrev($str);
+}
+?&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre></div>
+    </article><article class="card" data-cat="Arrays" data-title="q1. average and five highest temperatures">
+      <div class="card-head"><span class="badge">Arrays</span><h2>Q1. Average and Five Highest Temperatures</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;?php
+$temperature=[28,30,27,32,31,29,35,33,30,34,36,31,29,37,32];
+$average=array_sum($temperature)/count($temperature);
+rsort($temperature);
+echo &quot;Average High Temperature = &quot;.number_format($average,2).&quot;&lt;br&gt;&lt;br&gt;&quot;;
+echo &quot;Five Highest Temperatures:&lt;br&gt;&quot;;
+for($i=0;$i&lt;5;$i++) echo $temperature[$i].&quot;°C&lt;br&gt;&quot;;
+?&gt;</code></pre></div>
+    </article><article class="card" data-cat="Arrays" data-title="q2. associative array sorting">
+      <div class="card-head"><span class="badge">Arrays</span><h2>Q2. Associative Array Sorting</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;?php
+$array=[&quot;Sagar&quot;=&gt;31,&quot;Vicky&quot;=&gt;41,&quot;Leena&quot;=&gt;39,&quot;Ramesh&quot;=&gt;40];
+
+$temp=$array; asort($temp); echo &quot;Ascending by Value:&lt;br&gt;&quot;; print_r($temp);
+echo &quot;&lt;br&gt;&quot;;
+$temp=$array; ksort($temp); echo &quot;Ascending by Key:&lt;br&gt;&quot;; print_r($temp);
+echo &quot;&lt;br&gt;&quot;;
+$temp=$array; arsort($temp); echo &quot;Descending by Value:&lt;br&gt;&quot;; print_r($temp);
+echo &quot;&lt;br&gt;&quot;;
+$temp=$array; krsort($temp); echo &quot;Descending by Key:&lt;br&gt;&quot;; print_r($temp);
+?&gt;</code></pre></div>
+    </article><article class="card" data-cat="Arrays" data-title="q3. menu-driven associative array">
+      <div class="card-head"><span class="badge">Arrays</span><h2>Q3. Menu-Driven Associative Array</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;?php
+$array=[&quot;A&quot;=&gt;10,&quot;B&quot;=&gt;15,&quot;C&quot;=&gt;20,&quot;D&quot;=&gt;25,&quot;E&quot;=&gt;30];
+$choice=2;
+
+switch($choice) {
+    case 1:
+        print_r(array_chunk($array,2,true));
+        break;
+    case 2:
+        asort($array); print_r($array);
+        break;
+    case 3:
+        $result=array_filter($array,fn($v)=&gt;$v%2==0);
+        print_r($result);
+        break;
+    default: echo &quot;Invalid choice&quot;;
+}
+?&gt;</code></pre></div>
+    </article><article class="card" data-cat="Arrays" data-title="q4. queue insert and display">
+      <div class="card-head"><span class="badge">Arrays</span><h2>Q4. Queue Insert and Display</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;?php
+$queue=[];
+array_push($queue,10);
+array_push($queue,20);
+array_push($queue,30);
+echo &quot;Queue Contents:&lt;br&gt;&quot;;
+foreach($queue as $element) echo $element.&quot;&lt;br&gt;&quot;;
+?&gt;</code></pre></div>
+    </article><article class="card" data-cat="Arrays" data-title="q5. queue insert and delete">
+      <div class="card-head"><span class="badge">Arrays</span><h2>Q5. Queue Insert and Delete</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;?php
+$queue=[10,20,30];
+echo &quot;Original Queue: &quot;; print_r($queue);
+$deleted=array_shift($queue);
+echo &quot;&lt;br&gt;Deleted Element = $deleted&quot;;
+echo &quot;&lt;br&gt;Queue After Deletion: &quot;; print_r($queue);
+?&gt;</code></pre></div>
+    </article><article class="card" data-cat="Arrays" data-title="q6. stack insert and display">
+      <div class="card-head"><span class="badge">Arrays</span><h2>Q6. Stack Insert and Display</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;?php
+$stack=[];
+array_push($stack,10);
+array_push($stack,20);
+array_push($stack,30);
+echo &quot;Stack Contents:&lt;br&gt;&quot;;
+foreach(array_reverse($stack) as $element) echo $element.&quot;&lt;br&gt;&quot;;
+?&gt;</code></pre></div>
+    </article><article class="card" data-cat="Database &amp; Files" data-title="q1. student-competition database">
+      <div class="card-head"><span class="badge">Database &amp; Files</span><h2>Q1. Student-Competition Database</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>-- SQL tables
+CREATE DATABASE college;
+USE college;
+
+CREATE TABLE Student(
+  Stud_id INT PRIMARY KEY,
+  Name VARCHAR(50),
+  Class VARCHAR(20)
+);
+
+CREATE TABLE Competition(
+  C_no INT PRIMARY KEY,
+  C_name VARCHAR(50),
+  Type VARCHAR(30)
+);
+
+CREATE TABLE Student_Competition(
+  Stud_id INT,
+  C_no INT,
+  Rank_no INT,
+  Year INT,
+  PRIMARY KEY(Stud_id,C_no,Year),
+  FOREIGN KEY(Stud_id) REFERENCES Student(Stud_id),
+  FOREIGN KEY(C_no) REFERENCES Competition(C_no)
+);
+
+-- PHP query for 1st rank
+&lt;?php
+$conn=mysqli_connect(&quot;localhost&quot;,&quot;root&quot;,&quot;&quot;,&quot;college&quot;);
+$competition=$_POST[&#x27;competition&#x27;] ?? &#x27;&#x27;;
+$sql=&quot;SELECT Student.*, Student_Competition.Rank_no, Student_Competition.Year
+FROM Student JOIN Student_Competition ON Student.Stud_id=Student_Competition.Stud_id
+JOIN Competition ON Competition.C_no=Student_Competition.C_no
+WHERE Competition.C_name=&#x27;$competition&#x27; AND Student_Competition.Rank_no=1&quot;;
+$result=mysqli_query($conn,$sql);
+while($row=mysqli_fetch_assoc($result)) print_r($row);
+?&gt;</code></pre></div>
+    </article><article class="card" data-cat="Database &amp; Files" data-title="q2. doctor-hospital database">
+      <div class="card-head"><span class="badge">Database &amp; Files</span><h2>Q2. Doctor-Hospital Database</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>-- SQL tables
+CREATE TABLE Hospital(
+  hosp_no INT PRIMARY KEY,
+  hname VARCHAR(50),
+  hcity VARCHAR(50)
+);
+
+CREATE TABLE Doctor(
+  doc_no INT PRIMARY KEY,
+  dname VARCHAR(50),
+  address VARCHAR(100),
+  city VARCHAR(50),
+  area VARCHAR(50),
+  hosp_no INT,
+  FOREIGN KEY(hosp_no) REFERENCES Hospital(hosp_no)
+);
+
+-- PHP
+&lt;?php
+$conn=mysqli_connect(&quot;localhost&quot;,&quot;root&quot;,&quot;&quot;,&quot;college&quot;);
+$hospital=$_POST[&#x27;hospital&#x27;] ?? &#x27;&#x27;;
+$sql=&quot;SELECT Doctor.* FROM Doctor
+JOIN Hospital ON Doctor.hosp_no=Hospital.hosp_no
+WHERE Hospital.hname=&#x27;$hospital&#x27;&quot;;
+$result=mysqli_query($conn,$sql);
+while($row=mysqli_fetch_assoc($result)) print_r($row);
+?&gt;</code></pre></div>
+    </article><article class="card" data-cat="Database &amp; Files" data-title="q3. event-committee status update">
+      <div class="card-head"><span class="badge">Database &amp; Files</span><h2>Q3. Event-Committee Status Update</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;?php
+$conn=mysqli_connect(&quot;localhost&quot;,&quot;root&quot;,&quot;&quot;,&quot;college&quot;);
+$title=$_POST[&#x27;title&#x27;] ?? &#x27;&#x27;;
+$sql=&quot;UPDATE Committee
+JOIN Event_Committee ON Committee.cno=Event_Committee.cno
+JOIN Event ON Event.eno=Event_Committee.eno
+SET Committee.status=&#x27;Working&#x27;
+WHERE Event.title=&#x27;$title&#x27;&quot;;
+if(mysqli_query($conn,$sql)) echo &quot;Committee status updated successfully.&quot;;
+else echo &quot;Error updating status.&quot;;
+?&gt;
+&lt;form method=&quot;post&quot;&gt;
+Event Title: &lt;input type=&quot;text&quot; name=&quot;title&quot;&gt;
+&lt;input type=&quot;submit&quot; value=&quot;Update&quot;&gt;
+&lt;/form&gt;</code></pre></div>
+    </article><article class="card" data-cat="Database &amp; Files" data-title="q4. copy one file into another">
+      <div class="card-head"><span class="badge">Database &amp; Files</span><h2>Q4. Copy One File into Another</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;?php
+$source=$_POST[&#x27;source&#x27;] ?? &#x27;&#x27;;
+$destination=$_POST[&#x27;destination&#x27;] ?? &#x27;&#x27;;
+if(isset($_POST[&#x27;submit&#x27;])) {
+    if(file_exists($source)) {
+        file_put_contents($destination,file_get_contents($source));
+        echo &quot;File copied successfully.&quot;;
+    } else echo &quot;Source file does not exist.&quot;;
+}
+?&gt;
+&lt;form method=&quot;post&quot;&gt;
+Source: &lt;input name=&quot;source&quot;&gt;&lt;br&gt;&lt;br&gt;
+Destination: &lt;input name=&quot;destination&quot;&gt;&lt;br&gt;&lt;br&gt;
+&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Copy&quot;&gt;
+&lt;/form&gt;</code></pre></div>
+    </article><article class="card" data-cat="Database &amp; Files" data-title="q5. append one file into another">
+      <div class="card-head"><span class="badge">Database &amp; Files</span><h2>Q5. Append One File into Another</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;?php
+$source=$_POST[&#x27;source&#x27;] ?? &#x27;&#x27;;
+$destination=$_POST[&#x27;destination&#x27;] ?? &#x27;&#x27;;
+if(isset($_POST[&#x27;submit&#x27;])) {
+    if(file_exists($source)) {
+        file_put_contents($destination,file_get_contents($source),FILE_APPEND);
+        echo &quot;Content appended successfully.&quot;;
+    } else echo &quot;Source file does not exist.&quot;;
+}
+?&gt;
+&lt;form method=&quot;post&quot;&gt;
+Source: &lt;input name=&quot;source&quot;&gt;&lt;br&gt;&lt;br&gt;
+Destination: &lt;input name=&quot;destination&quot;&gt;&lt;br&gt;&lt;br&gt;
+&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Append&quot;&gt;
+&lt;/form&gt;</code></pre></div>
+    </article><article class="card" data-cat="Database &amp; Files" data-title="q6. menu-driven file operations">
+      <div class="card-head"><span class="badge">Database &amp; Files</span><h2>Q6. Menu-Driven File Operations</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;?php
+$filename=&quot;student.txt&quot;;
+$choice=1;
+
+switch($choice) {
+    case 1: echo &quot;File Type = &quot;.filetype($filename); break;
+    case 2: echo &quot;Last Modified = &quot;.date(&quot;d-m-Y H:i:s&quot;,filemtime($filename)); break;
+    case 3: echo &quot;File Size = &quot;.filesize($filename).&quot; bytes&quot;; break;
+    case 4:
+        echo unlink($filename) ? &quot;File deleted successfully.&quot; : &quot;Unable to delete file.&quot;;
+        break;
+    default: echo &quot;Invalid choice&quot;;
+}
+?&gt;</code></pre></div>
+    </article><article class="card" data-cat="Database &amp; Files" data-title="q7. read student.dat and calculate percentage">
+      <div class="card-head"><span class="badge">Database &amp; Files</span><h2>Q7. Read student.dat and Calculate Percentage</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;?php
+$file=fopen(&quot;student.dat&quot;,&quot;r&quot;);
+echo &quot;&lt;table border=&#x27;1&#x27;&gt;&quot;;
+echo &quot;&lt;tr&gt;&lt;th&gt;Roll No&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;OS&lt;/th&gt;&lt;th&gt;WT&lt;/th&gt;&lt;th&gt;DS&lt;/th&gt;&lt;th&gt;Python&lt;/th&gt;&lt;th&gt;Java&lt;/th&gt;&lt;th&gt;CN&lt;/th&gt;&lt;th&gt;Percentage&lt;/th&gt;&lt;/tr&gt;&quot;;
+while(($line=fgets($file))!==false) {
+    $data=explode(&quot;,&quot;,trim($line));
+    $total=$data[2]+$data[3]+$data[4]+$data[5]+$data[6]+$data[7];
+    $percentage=($total/600)*100;
+    echo &quot;&lt;tr&gt;&quot;;
+    for($i=0;$i&lt;8;$i++) echo &quot;&lt;td&gt;&quot;.$data[$i].&quot;&lt;/td&gt;&quot;;
+    echo &quot;&lt;td&gt;&quot;.number_format($percentage,2).&quot;%&lt;/td&gt;&lt;/tr&gt;&quot;;
+}
+echo &quot;&lt;/table&gt;&quot;;
+fclose($file);
+?&gt;</code></pre></div>
+    </article><article class="card" data-cat="Database &amp; Files" data-title="q8. student result and grade">
+      <div class="card-head"><span class="badge">Database &amp; Files</span><h2>Q8. Student Result and Grade</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;body&gt;
+&lt;form method=&quot;post&quot;&gt;
+&lt;table border=&quot;1&quot;&gt;
+&lt;tr&gt;&lt;th&gt;Sr No&lt;/th&gt;&lt;th&gt;Subject&lt;/th&gt;&lt;th&gt;Marks&lt;/th&gt;&lt;/tr&gt;
+&lt;?php for($i=1;$i&lt;=5;$i++){ ?&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;?php echo $i; ?&gt;&lt;/td&gt;
+&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;subject[]&quot;&gt;&lt;/td&gt;
+&lt;td&gt;&lt;input type=&quot;number&quot; name=&quot;marks[]&quot; min=&quot;0&quot; max=&quot;100&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;?php } ?&gt;
+&lt;/table&gt;&lt;br&gt;
+&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Calculate&quot;&gt;
+&lt;/form&gt;
+&lt;?php
+if(isset($_POST[&#x27;submit&#x27;])) {
+    $subjects=$_POST[&#x27;subject&#x27;]; $marks=$_POST[&#x27;marks&#x27;];
+    $total=array_sum($marks); $percentage=($total/500)*100;
+    if($percentage&gt;=90)$grade=&quot;A+&quot;;
+    elseif($percentage&gt;=80)$grade=&quot;A&quot;;
+    elseif($percentage&gt;=70)$grade=&quot;B&quot;;
+    elseif($percentage&gt;=60)$grade=&quot;C&quot;;
+    elseif($percentage&gt;=50)$grade=&quot;D&quot;;
+    else $grade=&quot;F&quot;;
+    echo &quot;&lt;h3&gt;Total: $total / 500&lt;/h3&gt;&quot;;
+    echo &quot;Percentage: &quot;.number_format($percentage,2).&quot;%&lt;br&gt;&quot;;
+    echo &quot;Grade: $grade&quot;;
+}
+?&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre></div>
+    </article><article class="card" data-cat="JavaScript &amp; jQuery" data-title="q1. alert, prompt and confirm">
+      <div class="card-head"><span class="badge">JavaScript &amp; jQuery</span><h2>Q1. Alert, Prompt and Confirm</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;body&gt;
+&lt;script&gt;
+alert(&quot;Exams are near. Have you started preparing for?&quot;);
+var name=prompt(&quot;Enter your name:&quot;);
+var answer=confirm(&quot;Have you started preparing for your exams?&quot;);
+if(answer) alert(&quot;Good &quot;+name+&quot;! Keep preparing.&quot;);
+else alert(&quot;Hello &quot;+name+&quot;! Please start preparing.&quot;);
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre></div>
+    </article><article class="card" data-cat="JavaScript &amp; jQuery" data-title="q2. username and password validation">
+      <div class="card-head"><span class="badge">JavaScript &amp; jQuery</span><h2>Q2. Username and Password Validation</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;body&gt;
+&lt;form onsubmit=&quot;return validate()&quot;&gt;
+Username: &lt;input type=&quot;text&quot; id=&quot;username&quot;&gt;&lt;br&gt;&lt;br&gt;
+Password: &lt;input type=&quot;password&quot; id=&quot;password&quot;&gt;&lt;br&gt;&lt;br&gt;
+&lt;input type=&quot;submit&quot; value=&quot;Submit&quot;&gt;
+&lt;/form&gt;
+&lt;script&gt;
+function validate() {
+    var username=document.getElementById(&quot;username&quot;).value;
+    var password=document.getElementById(&quot;password&quot;).value;
+    if(username==&quot;&quot;){alert(&quot;Username cannot be empty.&quot;);return false;}
+    if(username.length&lt;6){alert(&quot;Username must contain at least 6 characters.&quot;);return false;}
+    if(password==&quot;&quot;){alert(&quot;Password cannot be empty.&quot;);return false;}
+    if(password.length&lt;6){alert(&quot;Password must contain at least 6 characters.&quot;);return false;}
+    alert(&quot;Valid username and password.&quot;);
+    return true;
+}
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre></div>
+    </article><article class="card" data-cat="JavaScript &amp; jQuery" data-title="q3. jquery append">
+      <div class="card-head"><span class="badge">JavaScript &amp; jQuery</span><h2>Q3. jQuery Append</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;p id=&quot;para&quot;&gt;This is the original paragraph.&lt;/p&gt;
+&lt;ol id=&quot;list&quot;&gt;&lt;li&gt;Java&lt;/li&gt;&lt;li&gt;PHP&lt;/li&gt;&lt;/ol&gt;
+&lt;button id=&quot;btn&quot;&gt;Append&lt;/button&gt;
+&lt;script&gt;
+$(document).ready(function(){
+    $(&quot;#btn&quot;).click(function(){
+        $(&quot;#para&quot;).append(&quot; This text is appended using jQuery.&quot;);
+        $(&quot;#list&quot;).append(&quot;&lt;li&gt;JavaScript&lt;/li&gt;&quot;);
+    });
+});
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre></div>
+    </article><article class="card" data-cat="JavaScript &amp; jQuery" data-title="q4. jquery before and after image">
+      <div class="card-head"><span class="badge">JavaScript &amp; jQuery</span><h2>Q4. jQuery Before and After Image</h2></div>
+      <div class="code-wrap"><button class="copy" onclick="copyCode(this)">Copy</button><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h2&gt;Image Example&lt;/h2&gt;
+&lt;img id=&quot;myImage&quot; src=&quot;image.jpg&quot; width=&quot;300&quot; height=&quot;200&quot;&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;button id=&quot;btn&quot;&gt;Insert Text&lt;/button&gt;
+&lt;script&gt;
+$(document).ready(function(){
+    $(&quot;#btn&quot;).click(function(){
+        $(&quot;#myImage&quot;).before(&quot;&lt;p&gt;Text inserted before the image.&lt;/p&gt;&quot;);
+        $(&quot;#myImage&quot;).after(&quot;&lt;p&gt;Text inserted after the image.&lt;/p&gt;&quot;);
+    });
+});
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre></div>
+    </article></section>
+<div class="empty" id="empty">No practical found. Try another search.</div>
+</main>
+<footer>WT Practical Code Library • Keep this folder together when hosting it online.</footer>
+<script>
+function copyCode(btn){
+  const text=btn.parentElement.querySelector("code").innerText;
+  navigator.clipboard.writeText(text).then(()=>{
+    const old=btn.innerText; btn.innerText="Copied!";
+    setTimeout(()=>btn.innerText=old,1200);
+  });
+}
+function filterCards(){
+  const q=document.getElementById("search").value.toLowerCase();
+  const cat=document.getElementById("category").value;
+  let shown=0;
+  document.querySelectorAll(".card").forEach(card=>{
+    const okCat=cat==="all" || card.dataset.cat===cat;
+    const okText=card.dataset.title.includes(q) || card.innerText.toLowerCase().includes(q);
+    card.style.display=okCat && okText ? "" : "none";
+    if(okCat && okText) shown++;
+  });
+  document.getElementById("empty").style.display=shown?"none":"block";
+}
+</script>
+</body>
+</html>
